@@ -6,7 +6,7 @@ A simple Snake game implemented in C++ for the Windows terminal.
 ## Team Members
 - Marm Bhatt - Student ID 202401408
 - Raj Sutariya - Student ID 202401221
-- Kuldeep Solanki - Student ID 20240404
+- Kuldeep Solanki - Student ID 202404040
 - Harsh Patel - Student ID 202401261
 
 ## Features
