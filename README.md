@@ -1,62 +1,43 @@
 # Snake Game
 
-A simple Snake game implemented in C++ for the Windows terminal.
+A simple Snake Game implemented in C++ for the Windows terminal.
 
-## Team Name: Taneli Armanto
-## Team Members
-- Marm Bhatt - Student ID 202401408
-- Raj Sutariya - Student ID 202401221
-- Kuldeep Solanki - Student ID 202404040
-- Harsh Patel - Student ID 202401261
+## How to Run
 
-## Features
-- Classic snake gameplay
-- Randomly generated fruit
-- Score tracking
-- Basic collision detection
+1. Compile the code using a C++ compiler (like MinGW for Windows):
+   ```bash
+   g++ -o SnakeGame SnakeGame.cpp -std=c++11
+   ```
+2. Run the executable:
+   ```bash
+   SnakeGame.exe
+   ```
 
-## How to Play
-- Use `WASD` keys to move the snake:
-  - `W` - Move Up
-  - `A` - Move Left
-  - `S` - Move Down
-  - `D` - Move Right
-- Press `X` to quit the game.
-- The snake grows when it eats the fruit, and the score increases.
-- The game ends if the snake collides with the wall or itself.
+## Controls
 
-## Installation and Running
-### Prerequisites
-- Windows OS (game uses `conio.h` and `windows.h`)
-- C++ compiler (MinGW/GCC recommended)
+- `W` - Move Up
+- `S` - Move Down
+- `A` - Move Left
+- `D` - Move Right
+- `X` - Exit Game
 
-### Compilation
-To compile the game, run:
-```sh
-g++ SnakeGame.cpp -o SnakeGame.exe
-```
+## How the Game Works
 
-### Running
-Execute the compiled binary:
-```sh
-SnakeGame.exe
-```
+- The player controls the snake to eat the fruit ('F').
+- Every time the snake eats a fruit, it grows in length and the score increases.
+- The game ends if the snake hits the wall or itself.
 
-## Known Issues
-- The game flickers due to screen refresh.
-- The fruit sometimes does not respawn correctly.
-- Snake only appears after pressing `D`.
-- The game may not properly redraw when using larger grid sizes (e.g., 50x50).
+## Data Structures Used
 
-## Future Improvements
-- Implement smooth rendering to reduce flickering.
-- Fix fruit spawn issue.
-- Add difficulty levels and better collision handling.
-- Improve screen refresh method for larger grid sizes.
+- **Arrays**: `tailX[100]`, `tailY[100]` store the snake’s body.
+- **Enum**: `eDirection` to store movement direction.
+- **Variables**:
+  - `x, y` for snake’s head position.
+  - `fruitX, fruitY` for fruit position.
+  - `score` for tracking points.
+  - `nTail` for snake length.
 
-## Contributing
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+## Notes
 
-## License
-This project is open-source and free to use under the MIT License.
+This is a basic terminal-based Snake Game with simple logic and structure.
 
