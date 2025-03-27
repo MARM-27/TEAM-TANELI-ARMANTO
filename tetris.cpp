@@ -25,7 +25,7 @@ void hideCursor() {
     HANDLE consoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
     CONSOLE_CURSOR_INFO cursorInfo;
     GetConsoleCursorInfo(consoleHandle, &cursorInfo);
-    cursorInfo.dwSize = 100;   // Set size to 100% (optional)
+    cursorInfo.dwSize = 100;   
     cursorInfo.bVisible = false;
     SetConsoleCursorInfo(consoleHandle, &cursorInfo);
 }
@@ -125,7 +125,7 @@ public:
             }
         }
         clearLines();
-        Sleep(50);  // Prevents multiple pieces from falling at once
+        Sleep(50);  
         spawnPiece();
     }
     
@@ -149,7 +149,7 @@ public:
             int newLevel = (score / 100) + 1;
             if (newLevel > level) {
                 level = newLevel;
-                fallInterval = max(100, fallInterval - 100); // Decrease fall interval, min limit 100ms
+                fallInterval = max(100, fallInterval - 100); 
             }
         }
     }
@@ -174,7 +174,6 @@ public:
         // Calculate starting row for the side panel (to center it vertically)
         int panelStart = (HEIGHT - sidePanel.size()) / 2;
 
-        // Print the game grid with side panel appended on rows where applicable
         for (int i = 0; i < HEIGHT; i++) {
             screen << "| ";
             for (int j = 0; j < WIDTH; j++) {
@@ -193,22 +192,17 @@ public:
                     screen << ". ";
             }
             screen << "|\n";
-            // If this row falls in the side panel's area, print the corresponding side panel line
+            
             if (i >= panelStart && i < panelStart + sidePanel.size()) {
-                // Append the side panel text after the grid row
-                screen.seekp(-1, ios_base::cur); // remove the newline before appending side panel (optional)
+                
+                screen.seekp(-1, ios_base::cur); 
                 screen << "   " << sidePanel[i - panelStart] << "\n";
             }
         }
-
-        // Draw bottom boundary for the grid
         screen << "+";
         for (int j = 0; j <= WIDTH * 2; j++) screen << "-";
         screen << "+\n";
 
-        // (Score and Level now shown in side panel, so removed below the grid)
-
-        // Print "Game Over" message if needed
         if (gameOver) {
             screen << "GAME OVER!\n";
         }
