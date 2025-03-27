@@ -158,7 +158,23 @@ public:
         ostringstream screen;
         screen << "\n";
 
-        // Print the game grid
+        vector<string> sidePanel;
+    sidePanel.push_back("+----------+");
+    string scoreLine = "| Score: " + to_string(score);
+    while(scoreLine.length() < 12) scoreLine += " ";
+    scoreLine += "|";
+    sidePanel.push_back(scoreLine);
+    string levelLine = "| Level: " + to_string(level);
+    while(levelLine.length() < 12) levelLine += " ";
+    levelLine += "|";
+    sidePanel.push_back(levelLine);
+    sidePanel.push_back("+----------+");
+
+
+        // Calculate starting row for the side panel (to center it vertically)
+        int panelStart = (HEIGHT - sidePanel.size()) / 2;
+
+        // Print the game grid with side panel appended on rows where applicable
         for (int i = 0; i < HEIGHT; i++) {
             screen << "| ";
             for (int j = 0; j < WIDTH; j++) {
@@ -177,17 +193,22 @@ public:
                     screen << ". ";
             }
             screen << "|\n";
+            // If this row falls in the side panel's area, print the corresponding side panel line
+            if (i >= panelStart && i < panelStart + sidePanel.size()) {
+                // Append the side panel text after the grid row
+                screen.seekp(-1, ios_base::cur); // remove the newline before appending side panel (optional)
+                screen << "   " << sidePanel[i - panelStart] << "\n";
+            }
         }
 
-        // Draw bottom boundary
+        // Draw bottom boundary for the grid
         screen << "+";
         for (int j = 0; j <= WIDTH * 2; j++) screen << "-";
         screen << "+\n";
 
-        // Print score and level below the grid
-        screen << "Score: " << score << "  Level: " << level << "\n";
+        // (Score and Level now shown in side panel, so removed below the grid)
 
-        // Print "Game Over" below the score when the game ends
+        // Print "Game Over" message if needed
         if (gameOver) {
             screen << "GAME OVER!\n";
         }
