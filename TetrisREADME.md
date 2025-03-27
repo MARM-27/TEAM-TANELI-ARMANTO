@@ -4,7 +4,6 @@
 Experience the classic **Tetris** right in your terminal! This is a color-coded, interactive Tetris game built using C++ and Windows Console API.
 
 \
-*[Not actual gameplay — insert your own GIF if available]*
 
 ---
 
